@@ -1,3 +1,9 @@
+## Book Shop
+
+'**`Book Shop`**' es un portal web en donde podrá encontrar todo tipo de libro y poder adquirirlo sin moverse de casa.
+
+> Nota: Realizamos entregas en toda España con envío **GRATIS**.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
