@@ -1,0 +1,12 @@
+#carrito{
+      background-color: white;
+      border-radius: 5px;
+      /* width: 30px; */
+      height: 30px;
+      display: inline-flex;
+      padding: 3px;
+      margin-top: 5px;
+}
+.count-items {
+      color: #001c43;
+}

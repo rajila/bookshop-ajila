@@ -1,3 +1,4 @@
+import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css';
 
 const NavBar = (props) => {
@@ -36,12 +37,10 @@ const NavBar = (props) => {
                                     <a className="nav-link" href="#">Contacto</a>
                                 </li>
                             </ul>
-                            {/* Carrito de compras */}
                             <ul className="navbar-nav user pull-right">
 	                            <li className="dropdown menu">
-		                            <a id="carrito" href="#" title="Carrito Compras">
-                                        <img src="/assets/img/carrito-de-compras.png" alt="Icono carrito compra" />
-                                    </a>
+                                    {/* Carrito de compras */}
+                                    <CartWidget />
 	                            </li>
                             </ul>
                         </div>

@@ -27,6 +27,7 @@
 
 #navbarSupportedContent{
       background-color: #001c43;
+      height: 45px;
 }
 
 .navbar-collapse ul li a{
@@ -48,16 +49,6 @@
 
 .barra-menu{
       display: flex;
-}
-
-#carrito{
-      background-color: white;
-      border-radius: 25px;
-      width: 30px;
-      height: 30px;
-      display: inline-flex;
-      padding: 3px;
-      margin-top: 5px;
 }
 
 .barra-menu .nav-link:focus, .barra-menu .nav-link:hover {
