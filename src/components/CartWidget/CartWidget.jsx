@@ -5,7 +5,7 @@ const CartWidget = ({countItems = 0}) => {
             <>
                   <a id="carrito" href="#" title="Carrito Compras">
                         <img src="/assets/img/carrito-de-compras.png" alt="Icono carrito compra" /> 
-                        &nbsp;<span className="count-items"><b>(</b>{countItems}<b>)</b></span>
+                        &nbsp;<span className="count-items"><span className='color-yellow'>(</span>{countItems}<span className='color-yellow'>)</span></span>
                   </a>
             </>
       );

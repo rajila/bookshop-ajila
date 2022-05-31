@@ -9,4 +9,9 @@
 }
 .count-items {
       color: #001c43;
+      font-weight: bold;
+}
+
+.color-yellow {
+      color: #F5b400;
 }

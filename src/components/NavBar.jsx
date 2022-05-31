@@ -1,7 +1,7 @@
 import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css';
 
-const NavBar = (props) => {
+const NavBar = ({elementsCart}) => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -40,7 +40,7 @@ const NavBar = (props) => {
                             <ul className="navbar-nav user pull-right">
 	                            <li className="dropdown menu">
                                     {/* Carrito de compras */}
-                                    <CartWidget />
+                                    <CartWidget countItems={elementsCart} />
 	                            </li>
                             </ul>
                         </div>

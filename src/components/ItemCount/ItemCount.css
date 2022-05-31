@@ -1,0 +1,9 @@
+.elements-buy {
+      width: 35px;
+      /* border: 1px solid salmon; */
+      font-weight: bold;
+}
+
+.content-item-count div {
+      padding: 5px;
+}
