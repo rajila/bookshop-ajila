@@ -18,10 +18,8 @@ function App() {
     <div className="App">
       <NavBar elementsCart={elementsCart} />
       <br/>
-      <h1>Listado de Items</h1>
+      <h1>Listado de Libros</h1>
       <ItemListContainer title="Item 001" description="Description 001" onAdd={addElementToCart} key={1} />
-      <ItemListContainer title="Item 002" description="Description 002" onAdd={addElementToCart} key={2} />
-      {/* <ItemListContainer title="Item 003" description="Description 003" key={3} /> */}
     </div>
   );
 }

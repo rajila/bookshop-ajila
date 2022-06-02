@@ -1,0 +1,19 @@
+.item {
+      margin: auto;
+      width: 200px;
+      margin-bottom: 10px;
+}
+
+.item img {
+      width: 115px;
+      height: 155px;
+}
+
+.item > div.card {
+      border: 1px solid #babec1;
+}
+
+.detalle {
+      margin-top: 10px;
+      /* height: 35px; */
+}
