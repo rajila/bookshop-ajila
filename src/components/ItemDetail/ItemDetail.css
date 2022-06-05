@@ -1,0 +1,43 @@
+div.detail-content {
+      display: flex;
+      padding: 0 50px 50px 50px;
+}
+
+.detail-content section {
+      padding: 25px;
+}
+
+.detail-content img {
+      margin-top: 10px;
+      width: 220px;
+      height: 300px;
+      border: 1px ridge #001c43;
+}
+
+.description-detail {
+      text-align: justify;
+}
+
+.description-detail q {
+      quotes: "\201C" "\201D" "\2018" "\2019";
+      font-weight: bold;
+      font-size: 25px;
+}
+
+.description-detail q .d-d {
+      font-weight: normal;
+      font-size: var(--bs-body-font-size);
+}
+
+.detail-price {
+      font-size: 1.5em;
+      text-align: left;
+}
+
+#separador-detail {
+      height:auto;
+      width:1px;
+      border-width:0;
+      color:#000;
+      background-color:#000;
+}

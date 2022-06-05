@@ -1,11 +1,9 @@
+import { Link } from "react-router-dom";
+
 import './Item.css';
 
 const Item = ({ item = {} }) => {
-      const { title, stock, pictureUrl } = item;
-
-      const showDetalle = () => {
-            alert("En desarrollo!!!");
-      }
+      const { id, title, stock, pictureUrl } = item;
 
       return (
             <div className="item">
@@ -15,7 +13,9 @@ const Item = ({ item = {} }) => {
                         </div>
                         <div className="card-body">
                               <img src={`/assets/img/books/${pictureUrl}`} alt="Icono carrito compra" />
-                              <button className='btn btn-outline-primary detalle' onClick={showDetalle}>Ver detalle</button>
+                              <Link to={`/libros/item/${id}`}>
+                                    <button className='btn btn-outline-primary detalle'>Ver detalle</button>
+                              </Link>
                         </div>
                         <div className="card-footer text-muted">
                               Stock disponible: {stock}

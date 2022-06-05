@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Spinner } from "react-bootstrap";
-// import ItemCount from '../ItemCount/ItemCount';
 import './ItemListContainer.css';
 
 import BookService from '../../services/BookService';

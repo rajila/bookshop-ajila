@@ -1,6 +1,8 @@
 import { useState } from 'react';
-// import logo from './logo.svg';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
 import './App.css';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar';
@@ -18,8 +20,14 @@ function App() {
     <div className="App">
       <NavBar elementsCart={elementsCart} />
       <br/>
-      <h1>Listado de Libros</h1>
-      <ItemListContainer title="Item 001" description="Description 001" onAdd={addElementToCart} key={1} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ItemListContainer title="Item 001" description="Description 001" onAdd={addElementToCart} />} />
+          <Route path="/libros" element={<ItemListContainer title="Item 001" description="Description 001" onAdd={addElementToCart} />} />
+          <Route path="/libros/item/:id" element = {<ItemDetailContainer />} />
+          <Route path='*' element={ <Navigate to={"/"} /> } />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

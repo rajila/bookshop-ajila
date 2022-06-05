@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './ItemCount.css';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock = 0, initial = 0, onAdd }) => {
       const INCREMENT_VALUE = 1;
       const [countBook, setCountBook] = useState(initial); // Numero de elementos que se desea comprar. Y para descontar el numero de elementos de stock
       const [stockDisponible, setStockDisponible] = useState(stock); // Stock disponible en el momento de la compra, y para las respetivas validaciones validaciones

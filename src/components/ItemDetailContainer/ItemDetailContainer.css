@@ -1,0 +1,10 @@
+.btn-atras {
+      font-weight: bold;
+      padding-left: 80px;
+      cursor: pointer;
+      color: #001c43;
+}
+
+.btn-atras img {
+      width: 20px;
+}
