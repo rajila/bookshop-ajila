@@ -13,10 +13,6 @@ const ItemDetailContainer = () => {
       const navigate = useNavigate();
       const { id } = useParams();
 
-      const addElementToCart = (value) => {
-            console.log('Pendiente de implementar: Valor de carrito de compra con CONTEXT');
-      }; 
-
       const loadSpinner = () => {
             return (
                   <Spinner animation="border" role="status">
@@ -37,7 +33,7 @@ const ItemDetailContainer = () => {
                                     <img src="/assets/img/iconos/atras.png" alt="Icono carrito compra" /> Atr&aacute;s
                               </span>
                         </p>
-                        <ItemDetail item={item} onAdd={addElementToCart} />
+                        <ItemDetail item={item} />
                   </div>
             );
       }
@@ -52,7 +48,7 @@ const ItemDetailContainer = () => {
             }).finally(() => {
                   setLoading(false);
             });
-      }, []);
+      }, [id]);
 
       return (
             <>

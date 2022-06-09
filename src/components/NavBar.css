@@ -1,14 +1,16 @@
 .head-title {
-      /* background-color: blue; */
       height: 75px;
-      /* text-align: left; */
-      /* border: 1px solid black; */
       display: flex;
 }
 
 .head-title-1{
       width: 70%;
       text-align: left;
+}
+
+.head-title-1 a, .head-title-1 a:hover{
+      color: #001c43;
+      text-decoration: none;
 }
 
 .head-title-2{
@@ -53,4 +55,8 @@
 
 .barra-menu .nav-link:focus, .barra-menu .nav-link:hover {
       color: #F5b400;
+}
+
+nav.navbar {
+      padding-bottom: 0rem;
 }

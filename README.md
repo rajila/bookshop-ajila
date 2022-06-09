@@ -1,6 +1,14 @@
-## Book Shop
+# Book Shop
 
 '**`Book Shop`**' es un portal web en donde podrá encontrar todo tipo de libro y poder adquirirlo sin moverse de casa.
+
+## Categorias
+Nuestra tienda de libros cuenta actualmente con 3 tipos de categorias, en donde podra encontrar diferentes tipos de libros a su gusto.
+- Computación
+- Matemáticas
+- Medicina
+
+No olvide que '**`Book Shop`**' siempre ofrece los mejores precios que la competencia.
 
 > Nota: Realizamos entregas en toda España con envío **GRATIS**.
 

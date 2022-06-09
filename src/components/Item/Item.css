@@ -1,19 +1,32 @@
 .item {
       margin: auto;
-      width: 200px;
+      width: 250px;
       margin-bottom: 10px;
 }
 
 .item img {
-      width: 115px;
-      height: 155px;
+      width: 150px;
+      height: 220px;
+      border: 1px ridge #001c43;
 }
 
-.item > div.card {
-      border: 1px solid #babec1;
+.item div.card {
+      border: 1px solid #9da3ab;
+      cursor: pointer;
 }
 
 .detalle {
       margin-top: 10px;
-      /* height: 35px; */
+}
+
+.item div.card-header, .item div.card-footer {
+      background-color: rgb(240 240 238 / 98%);
+}
+
+.item div.card-header {
+      border-bottom: 1px solid #9da3ab;
+}
+
+.item div.card-footer {
+      border-top: 1px solid #9da3ab;
 }

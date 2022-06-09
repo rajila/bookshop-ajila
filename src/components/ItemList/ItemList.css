@@ -1,3 +1,15 @@
 .item-list {
+      width: 80%;
+      margin: auto;
       padding: 5px;
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+}
+
+.item-list a {
+      color: #000;
+      text-decoration: none;
 }

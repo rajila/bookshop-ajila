@@ -4,6 +4,8 @@ import './ItemCount.css';
 
 const ItemCount = ({ stock = 0, initial = 0, onAdd }) => {
       const INCREMENT_VALUE = 1;
+      
+      // Estados del componente para actualizar la informacion del layout el componente
       const [countBook, setCountBook] = useState(initial); // Numero de elementos que se desea comprar. Y para descontar el numero de elementos de stock
       const [stockDisponible, setStockDisponible] = useState(stock); // Stock disponible en el momento de la compra, y para las respetivas validaciones validaciones
       
@@ -13,13 +15,12 @@ const ItemCount = ({ stock = 0, initial = 0, onAdd }) => {
 
       const addCart = () => {
             setStockDisponible((stockDisponible) => stockDisponible - countBook);
-            onAdd(countBook); // Call function onAdd and aumenta el numero de productos en el carrito
+            onAdd(countBook); // Call function onAdd del padre, aumenta el numero de productos en el carrito
             setCountBook(initial); // Reset count
       }
 
       return (
             <div className="container content-item-count">
-                  {/* Div temporal */}
                   <div>
                         <b>Stock disponible</b>: {stockDisponible}
                   </div>

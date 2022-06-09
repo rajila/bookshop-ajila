@@ -1,3 +1,15 @@
+const BookCategories = {
+      computacion: "computacion",
+      matematicas: "matematicas",
+      medicina: "medicina"
+};
+
+const BookCategoriesLabel = {
+      computacion: "Computación",
+      matematicas: "Matemáticas",
+      medicina: "Medicina"
+};
+
 const BookUtil = {
       data: [
             {
@@ -8,6 +20,7 @@ const BookUtil = {
                   autor: 'William Lakefield',
                   price: 14.95,
                   stock: 10,
+                  category: BookCategories.computacion,
                   pictureUrl: 'CriptoMonedas.jpg'
             },
             {
@@ -18,6 +31,7 @@ const BookUtil = {
                   autor: 'Jeff Nickoloff, Stephen Kuenzli, Bret Fisher',
                   price: 46.17,
                   stock: 2,
+                  category: BookCategories.computacion,
                   pictureUrl: 'DockerInAction.jpg'
             },
             {
@@ -28,6 +42,7 @@ const BookUtil = {
                   autor: 'César Fernández Acebal',
                   price: 39.76,
                   stock: 1,
+                  category: BookCategories.computacion,
                   pictureUrl: 'PatronDisenio.jpg'
             },
             {
@@ -38,6 +53,7 @@ const BookUtil = {
                   autor: 'Robin Wieruch',
                   price: 27.82,
                   stock: 7,
+                  category: BookCategories.computacion,
                   pictureUrl: 'RoadReact.jpg'
             },
             {
@@ -48,9 +64,33 @@ const BookUtil = {
                   autor: 'DRK EDICION SL',
                   price: 59.89,
                   stock: 15,
+                  category: BookCategories.medicina,
                   pictureUrl: 'AtlasAnatomiaHumana.jpg'
+            },
+            {
+                  id: 6,
+                  title: 'Cálculo diferencial',
+                  description: `El libro Cálculo diferencial presenta, tanto la teoría como los ejercicios, en forma asequible para cualquier estudiante de nuevo ingreso en escuelas o facultades de ingeniería. Por esta razón se ha incluido en él gran número de gráficas, ejemplos y ejercicios. Hemos puesto atención en una didáctica útil para los procesos de abstracción implícitos en el contenido matemático desglosado en sus 10 capítulos.`,
+                  publication: 2008,
+                  autor: 'Ernesto Javier Espinosa Herrera, Ignacio Canals Navarrete, Manuel Meda Vidal, Rafae Pérez Flores',
+                  price: 29.64,
+                  stock: 3,
+                  category: BookCategories.matematicas,
+                  pictureUrl: 'CalculoDiferencial.jpg'
+            },
+            {
+                  id: 7,
+                  title: 'Álgebra lineal',
+                  description: `Este libro tiene como objetivo el estudio del Álgebra Lineal, a través de la comprensión de los conceptos teóricos y del manejo adecuado de los instrumentos y técnicas que esta materia proporciona.`,
+                  publication: 2013,
+                  autor: 'Paloma Sanz Alvaro, Francisco J. Vázquez Hernández',
+                  price: 27.55,
+                  stock: 0,
+                  category: BookCategories.matematicas,
+                  pictureUrl: 'AlgebraLineal.jpg'
             } 
       ]
 }
 
 export const dataBook = BookUtil.data;
+export const categoriesLabel = BookCategoriesLabel;

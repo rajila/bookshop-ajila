@@ -1,6 +1,14 @@
-.content-item {
-      border: 1px solid rgba(78, 76, 76, 0.626);
-      background-color: rgb(240 240 238 / 98%);
-      border-radius: 10px;
-      margin-bottom: 10px;
+.header-content-item {
+      padding-bottom: 10px;
+}
+
+.frase-book q {
+      quotes: "\201C" "\201D" "\2018" "\2019";
+      font-weight: bold;
+      font-size: 20px;
+}
+
+.frase-book q .d-d {
+      font-weight: normal;
+      font-size: var(--bs-body-font-size);
 }

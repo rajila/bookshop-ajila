@@ -4,7 +4,7 @@ import Item from "../Item/Item";
 const ItemList = ({ items = [] }) => {
       const drawItems = () => {
             return items.map(item => {
-                  return <Item key={item.id} item={item} />;
+                  return (<Item item={item} key={item.id} />);
             });
       }
 

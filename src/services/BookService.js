@@ -18,9 +18,19 @@ const BookService = () => {
                         resolve(item);
                   }, 2000);
             });
+      };
+
+      // Obtiene los libros por categoria
+      const getItemByCategory = (category) => {
+            return new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                        const items = dataBook.filter(item => item.category === category);
+                        resolve(items);
+                  }, 2000);
+            });
       }
 
-      return { getAllBooks, getItem };
+      return { getAllBooks, getItem, getItemByCategory };
 }
 
 export default BookService;
