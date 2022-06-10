@@ -1,15 +1,21 @@
-import ItemCount from '../ItemCount/ItemCount';
+import { useState } from 'react';
 
+import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 import imagennodisponible from './img/imagen-no-disponible.jpg';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
       const NO_EXISTE = 'Recurso no disponible';
       const INIT_VALUE = 0;
       const { title=NO_EXISTE, autor=NO_EXISTE, publication=1900, description=NO_EXISTE, price=0, stock=0, pictureUrl } = item;
       
+      // Estado para ocultar el componente ItemCount
+      const [finalizarCompra, setFinalizarCompra] = useState(false);
+      
       // Funcion no implementada que se encarga de aumentar el numero de elementos en el carrito
-      const addElementToCart = (value) => {
+      const onAdd = (quantityToAdd) => {
+            setFinalizarCompra(quantityToAdd);
             console.log('Pendiente de implementar: Valor de carrito de compra con CONTEXT');
       };
 
@@ -26,7 +32,15 @@ const ItemDetail = ({ item }) => {
                               <p className='text-start'><b>Publicación: </b>{publication}</p>
                               <p className='description-detail'><q><span className='d-d'>{description}</span></q></p>
                               <p className='detail-price'>€ {price}</p>
-                              <ItemCount stock={stock} initial={INIT_VALUE} onAdd={addElementToCart} />
+                              {/* // Call ItemCount */}
+                              {
+                                    finalizarCompra ?
+                                          <Link to='/cart'>
+                                                <button className="btn btn-primary">Terminar compra</button>
+                                          </Link>
+                                    :
+                                          <ItemCount stock={stock} initial={INIT_VALUE} onAdd={onAdd} />
+                              }
                         </section>
                   </div>
             </div>
