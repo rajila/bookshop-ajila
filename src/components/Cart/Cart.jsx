@@ -1,5 +1,8 @@
+import { useCartContext } from "../../context/CartContext";
+
 const Cart = () => {
-      return (<h2>Componente CART</h2>);
+      const { getQuantityCart } = useCartContext();
+      return (<h2>Cantidad total: {getQuantityCart()}</h2>);
 }
 
 export default Cart;

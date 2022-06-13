@@ -2,8 +2,12 @@ import { useNavigate } from "react-router-dom";
 
 import './Item.css';
 
+import { useCartContext } from '../../context/CartContext';
+
 const Item = ({ item = {} }) => {
       const { id, title, stock, pictureUrl } = item;
+
+      const { getQuantityByItem } = useCartContext();
 
       const navigate = useNavigate();
 
@@ -28,7 +32,7 @@ const Item = ({ item = {} }) => {
                               </section>
                         </div>
                         <div className="card-footer text-muted">
-                              Stock disponible: {stock}
+                              Stock disponible: {stock - getQuantityByItem(id)}
                         </div>
                   </div>
             </div>

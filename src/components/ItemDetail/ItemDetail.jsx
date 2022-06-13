@@ -5,18 +5,23 @@ import './ItemDetail.css';
 import imagennodisponible from './img/imagen-no-disponible.jpg';
 import { Link } from 'react-router-dom';
 
+import { useCartContext } from '../../context/CartContext';
+
 const ItemDetail = ({ item }) => {
       const NO_EXISTE = 'Recurso no disponible';
       const INIT_VALUE = 0;
-      const { title=NO_EXISTE, autor=NO_EXISTE, publication=1900, description=NO_EXISTE, price=0, stock=0, pictureUrl } = item;
+      const { id=0, title=NO_EXISTE, autor=NO_EXISTE, publication=1900, description=NO_EXISTE, price=0, stock=0, pictureUrl } = item;
       
+      const { addItem, getQuantityByItem } = useCartContext();
+
       // Estado para ocultar el componente ItemCount
       const [finalizarCompra, setFinalizarCompra] = useState(false);
       
       // Funcion no implementada que se encarga de aumentar el numero de elementos en el carrito
       const onAdd = (quantityToAdd) => {
-            setFinalizarCompra(quantityToAdd);
-            console.log('Pendiente de implementar: Valor de carrito de compra con CONTEXT');
+            setFinalizarCompra(true);
+            addItem(item, quantityToAdd); // Call the addItem function from the context
+            // console.log('Pendiente de implementar: Valor de carrito de compra con CONTEXT');
       };
 
       return (
@@ -39,7 +44,7 @@ const ItemDetail = ({ item }) => {
                                                 <button className="btn btn-primary">Terminar compra</button>
                                           </Link>
                                     :
-                                          <ItemCount stock={stock} initial={INIT_VALUE} onAdd={onAdd} />
+                                          <ItemCount stock={stock - getQuantityByItem(id)} initial={INIT_VALUE} onAdd={onAdd} />
                               }
                         </section>
                   </div>

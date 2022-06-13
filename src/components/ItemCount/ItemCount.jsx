@@ -15,8 +15,7 @@ const ItemCount = ({ stock = 0, initial = 0, onAdd }) => {
 
       const addCart = () => {
             setStockDisponible((stockDisponible) => stockDisponible - countBook);
-            // onAdd(countBook); // Call function onAdd del padre, aumenta el numero de productos en el carrito
-            onAdd(true); // Valor temporal para el DESAFIO
+            onAdd(countBook); // Call function onAdd del padre, aumenta el numero de productos en el carrito
             setCountBook(initial); // Reset count
       }
 
