@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css';
 
-const NavBar = ({elementsCart}) => {
+const NavBar = () => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -44,7 +44,7 @@ const NavBar = ({elementsCart}) => {
                             <ul className="navbar-nav user pull-right">
 	                            <li className="dropdown menu">
                                     {/* Carrito de compras */}
-                                    <CartWidget countItems={elementsCart} />
+                                    <CartWidget />
 	                            </li>
                             </ul>
                         </div>

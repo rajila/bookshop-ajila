@@ -1,13 +1,28 @@
+import { Link } from 'react-router-dom';
+import { BsCart2 } from 'react-icons/bs';
+
+import { useCartContext } from '../../context/CartContext';
+
 import './CartWidget.css';
 
-const CartWidget = ({countItems = 0}) => {
+const CartWidget = () => {
+      const { getQuantityCart } = useCartContext();
+
+      const drawIcon = () => {
+            return (
+                  <>
+                        <Link id='carrito' to={"/cart"}>
+                              <BsCart2 size={'1.5em'} />
+                        </Link>
+                        <span className='count-items'>{getQuantityCart()}</span>
+                  </>
+            );
+      }
+
       return (
-            <>
-                  <a id="carrito" href="#" title="Carrito Compras">
-                        <img src="/assets/img/carrito-de-compras.png" alt="Icono carrito compra" /> 
-                        &nbsp;<span className="count-items"><span className='color-yellow'>(</span>{countItems}<span className='color-yellow'>)</span></span>
-                  </a>
-            </>
+            <section>
+                  { (getQuantityCart() <= 0 ) || drawIcon() }
+            </section>
       );
 }
 

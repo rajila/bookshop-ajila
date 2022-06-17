@@ -1,14 +1,32 @@
 #carrito{
+      color: #001c43;
       background-color: white;
       border-radius: 5px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       display: inline-flex;
-      padding: 3px;
+      padding: 4px;
       margin-top: 5px;
+      text-decoration: none;
+      border-radius: 50%;
 }
+
+#carrito:hover {
+      color: #F5b400;
+}
+
 .count-items {
-      color: #001c43;
+      border: 2px solid white;
+      margin-left: -11px;
+      margin-top: -10px;
+      position: absolute;
+      color: white;
       font-weight: bold;
+      border-radius: 50%;
+      min-width: 25px;
+      font-size: 13px;
+      background-color: red;
+      padding: 2px;
 }
 
 .color-yellow {

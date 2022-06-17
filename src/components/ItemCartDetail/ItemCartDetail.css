@@ -1,0 +1,35 @@
+div.item-cart-content {
+      padding: 0px 50px 0px 50px;
+}
+
+.item-cart-content div.row div {
+      padding: 15px 10px 15px 10px;
+}
+
+.item-cart-content img {
+      margin-top: 5px;
+      width: 130px;
+      height: 200px;
+      border: 1px ridge #001c43;
+}
+
+.item-cart-content .btn-redondo{
+      background-color: #001c43;
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+}
+
+div.item-cart-content .total-item-cart {
+      /* font-weight: bold; */
+      font-size: 19px;
+}
+
+div.item-cart-content p.p-autor{
+      padding-right: 50px;
+}
+
+div.item-cart-content p{
+      font-size: 15px;
+}

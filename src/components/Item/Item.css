@@ -19,7 +19,13 @@
       margin-top: 10px;
 }
 
-.item div.card-header, .item div.card-footer {
+.item div.card-footer {
+      color: #001c43;
+      background-color: rgb(240 240 238 / 98%);
+}
+
+.item div.card-header {
+      color: #001c43;
       background-color: rgb(240 240 238 / 98%);
 }
 

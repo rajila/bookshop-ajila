@@ -18,13 +18,14 @@ export const CartProvider = (props) => {
             return true;
       };
 
-      // Remueve una unidad del item hasta que se quede sin unidades. Si la cantidad es 0, lo elimina del carrito.
+      // Remueve una unidad del item hasta que se quede sin unidades. Si la cantidad es 0, lo elimina del carrito.cart
       const removeItem = (itemId = undefined) => {
+            // console.log('date: ', new Date());
             const itemIndex = cart.findIndex((el) => el.id === itemId); // Busca el item en el carrito
             if (itemIndex === -1) return false;
             setCart((cart) => {
-                  cart[itemIndex].quantity -= 1;
-                  return (cart[itemIndex].quantity <= 0) ? [...cart.slice(0, itemIndex), ...cart.slice(itemIndex + 1)] : [...cart];
+                  let quantity = cart[itemIndex].quantity - 1;
+                  return (quantity <= 0) ? [...cart.slice(0, itemIndex), ...cart.slice(itemIndex + 1)] : [...cart.slice(0, itemIndex), { ...cart[itemIndex], quantity }, ...cart.slice(itemIndex + 1)];
             });
             return true;
       };
@@ -42,13 +43,16 @@ export const CartProvider = (props) => {
 
       // Retorna la cantidad total de items en el carrito (TEMPORAL)
       const getQuantityCart = () => {
-            console.log('cart', cart);
             return cart.reduce((prevQuantity, el) => prevQuantity + el.quantity, 0);
       };
 
       // Retorna la cantidad de ejemplares de un item en el carrito
       const getQuantityByItem = (itemId) => {
             return ((cart.find(el => el.id === itemId) || {}).quantity) || 0;
+      };
+
+      const getTotal = () => {
+            return (cart.reduce((prevTotal, el) => prevTotal + (el.price * el.quantity), 0)).toFixed(2);
       };
 
       return(
@@ -60,7 +64,8 @@ export const CartProvider = (props) => {
                         clear, 
                         isInCart, 
                         getQuantityCart, 
-                        getQuantityByItem
+                        getQuantityByItem,
+                        getTotal
                   } 
             }>
                   { props.children }

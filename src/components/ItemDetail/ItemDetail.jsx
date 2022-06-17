@@ -21,7 +21,6 @@ const ItemDetail = ({ item }) => {
       const onAdd = (quantityToAdd) => {
             setFinalizarCompra(true);
             addItem(item, quantityToAdd); // Call the addItem function from the context
-            // console.log('Pendiente de implementar: Valor de carrito de compra con CONTEXT');
       };
 
       return (
@@ -36,12 +35,12 @@ const ItemDetail = ({ item }) => {
                               <p className='text-start'><b>Autor(es): </b>{autor}</p>
                               <p className='text-start'><b>Publicación: </b>{publication}</p>
                               <p className='description-detail'><q><span className='d-d'>{description}</span></q></p>
-                              <p className='detail-price'>€ {price}</p>
+                              <p className='detail-price'>{price} €</p>
                               {/* // Call ItemCount */}
                               {
                                     finalizarCompra ?
                                           <Link to='/cart'>
-                                                <button className="btn btn-primary">Terminar compra</button>
+                                                <button className="btn-custom">Terminar compra</button>
                                           </Link>
                                     :
                                           <ItemCount stock={stock - getQuantityByItem(id)} initial={INIT_VALUE} onAdd={onAdd} />

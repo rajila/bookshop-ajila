@@ -31,7 +31,7 @@ const Item = ({ item = {} }) => {
                                     <button onClick={goItem} className='btn btn-outline-primary detalle'>Ver detalle</button>
                               </section>
                         </div>
-                        <div className="card-footer text-muted">
+                        <div className="card-footer">
                               Stock disponible: {stock - getQuantityByItem(id)}
                         </div>
                   </div>
