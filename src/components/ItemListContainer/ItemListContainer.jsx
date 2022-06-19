@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import { BsEmojiFrown } from 'react-icons/bs';
 
 import { Spinner, Alert } from "react-bootstrap";
 import './ItemListContainer.css';
 
-import BookService from '../../services/BookService';
+// Call services
+// import BookService from '../../services/BookService';
+import BookService from '../../services/FirebaseService';
+
 import ItemList from '../ItemList/ItemList';
 
 import { categoriesLabel } from '../../helpers/BookUtil';
@@ -44,7 +48,7 @@ const ItemListContainer = () => {
                         <p className='frase-book'><q><span className='d-d'>El que ama la lectura, tiene todo a su alcance.</span></q> [William Godwim]</p>
                         <hr />
                   </div>
-                  { loading ? loadSpinner() : ( (items.length === 0 ) ? <Alert className='fw-bold' key={'danger'} variant={'danger'}>No hay libros que mostrar!!</Alert>:<ItemList items={items} />) }
+                  { loading ? loadSpinner() : ( (items.length === 0 ) ? <Alert className='fw-bold' key={'danger'} variant={'danger'}>No hay libros que mostrar <BsEmojiFrown /> <BsEmojiFrown /> <BsEmojiFrown />!!</Alert>:<ItemList items={items} />) }
             </div>
       );
 }

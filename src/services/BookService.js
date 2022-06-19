@@ -14,7 +14,7 @@ const BookService = () => {
       const getItem = (id) => {
             return new Promise((resolve, reject) => {
                   setTimeout(() => {
-                        const item = dataBook.find(item => item.id === id) || {};
+                        const item = dataBook.find(item => item.id === Number(id)) || {};
                         resolve(item);
                   }, 2000);
             });

@@ -4,7 +4,10 @@ import { Spinner } from "react-bootstrap";
 
 import './ItemDetailContainer.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import BookService from '../../services/BookService';
+
+// Call services
+// import BookService from '../../services/BookService';
+import BookService from '../../services/FirebaseService';
 
 const ItemDetailContainer = () => {
       const [item, setItem] = useState({});
@@ -41,7 +44,7 @@ const ItemDetailContainer = () => {
       useEffect(() => {
             const { getItem } = BookService();
             setLoading(true);
-            getItem(Number(id)).then(data => {
+            getItem(id).then(data => {
                   setItem(data);
             }).catch(err => {
                   console.error('ERROR:',err);
