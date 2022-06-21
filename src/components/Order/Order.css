@@ -1,0 +1,50 @@
+div.order-content {
+      padding: 0 50px 20px 50px;
+}
+
+.order-content > div {
+      padding: 0px 20px;
+}
+
+.order-form-content {
+      padding-left: 20px;
+      padding-right: 20px;
+}
+
+.order-form-content input.is-valid, .order-form-content input.is-invalid {
+      background-image: none !important;
+} 
+
+.order-form-content input.is-valid {
+      border-color: #198754 !important;
+} 
+
+.order-form-content input.is-invalid {
+      border-color: #dc3545 !important;
+} 
+
+.order-form-content input.is-valid:focus {
+      border-color: #198754;
+      box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%) !important;
+}
+
+.order-form-content input.is-invalid:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%) !important;
+}
+
+.order-content .delete-item-order {
+      cursor: pointer;
+}
+
+.order-cart-content {
+      padding-left: 20px;
+      padding-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+      .order-form-content {
+            min-width: 100%;
+            width: min-content;
+      }
+}

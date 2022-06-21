@@ -23,3 +23,8 @@
 .btn-custom:hover {
       color: #F5b400;
 }
+
+.btn-content-resume {
+      display: flex;
+      justify-content: space-evenly;
+}

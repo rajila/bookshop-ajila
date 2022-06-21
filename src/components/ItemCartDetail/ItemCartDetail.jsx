@@ -1,12 +1,10 @@
-// import { useCartContext } from "../../context/CartContext";
-
 import { BsXLg } from 'react-icons/bs';
 
 import './ItemCartDetail.css';
 
 const ItemCartDetail = ({ item, onRemoveItemCart }) => {
       const { id, title, autor, price=0, quantity, publication, pictureUrl } = item;
-      // const { removeItem } = useCartContext();
+      
       return (
             <div className="container item-cart-content">
                   <div className="row">
@@ -27,13 +25,13 @@ const ItemCartDetail = ({ item, onRemoveItemCart }) => {
                               <p className='text-start p-autor'><b>Autor(es): </b> {autor}</p>
                               <p className='text-start'><b>Año publicación: </b> {publication}</p>
                               <p className='text-start'><b>Cantidad: </b> {quantity}</p>
-                              {/* <p className='text-start'><b>Precio: </b> {price} €</p> */}
+                              
                               <section className='row'>
                                     <section className='col-md-auto'>
                                           <p className='text-start'><b>Precio: </b> {price} €</p>
                                     </section>
                                     <section className='col'>
-                                          <p className='text-end total-item-cart'>{(price * quantity).toFixed(2)} €</p>
+                                          <p className='text-end total-item-cart'>{Number((price * quantity).toFixed(2))} €</p>
                                     </section>
                               </section>
                         </div>

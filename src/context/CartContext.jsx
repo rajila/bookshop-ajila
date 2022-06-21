@@ -20,13 +20,15 @@ export const CartProvider = (props) => {
 
       // Remueve una unidad del item hasta que se quede sin unidades. Si la cantidad es 0, lo elimina del carrito.cart
       const removeItem = (itemId = undefined) => {
-            // console.log('date: ', new Date());
-            const itemIndex = cart.findIndex((el) => el.id === itemId); // Busca el item en el carrito
-            if (itemIndex === -1) return false;
-            setCart((cart) => {
-                  let quantity = cart[itemIndex].quantity - 1;
-                  return (quantity <= 0) ? [...cart.slice(0, itemIndex), ...cart.slice(itemIndex + 1)] : [...cart.slice(0, itemIndex), { ...cart[itemIndex], quantity }, ...cart.slice(itemIndex + 1)];
-            });
+            // const itemIndex = cart.findIndex((el) => el.id === itemId); // Busca el item en el carrito
+            // if (itemIndex === -1) return false;
+            // setCart((cart) => {
+            //       let quantity = cart[itemIndex].quantity - 1;
+            //       return (quantity <= 0) ? [...cart.slice(0, itemIndex), ...cart.slice(itemIndex + 1)] : [...cart.slice(0, itemIndex), { ...cart[itemIndex], quantity }, ...cart.slice(itemIndex + 1)];
+            // });
+            
+            // Elimina el item del carrito, sin importar la cantidad. REGLAS DEL DESAFIO
+            setCart((cart) => cart.filter((el) => el.id !== itemId));
             return true;
       };
 
@@ -41,7 +43,7 @@ export const CartProvider = (props) => {
             return cart.some(el => el.id === itemId); // Retorna true si el item esta en el carrito, false si no
       };
 
-      // Retorna la cantidad total de items en el carrito (TEMPORAL)
+      // Retorna la cantidad total de items en el carrito
       const getQuantityCart = () => {
             return cart.reduce((prevQuantity, el) => prevQuantity + el.quantity, 0);
       };
@@ -52,7 +54,7 @@ export const CartProvider = (props) => {
       };
 
       const getTotal = () => {
-            return (cart.reduce((prevTotal, el) => prevTotal + (el.price * el.quantity), 0)).toFixed(2);
+            return Number((cart.reduce((prevTotal, el) => prevTotal + (el.price * el.quantity), 0)).toFixed(2));
       };
 
       return(

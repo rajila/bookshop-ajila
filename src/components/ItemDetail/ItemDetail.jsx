@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 import imagennodisponible from './img/imagen-no-disponible.jpg';
-import { Link } from 'react-router-dom';
+import MessageInfo from '../MessageInfo/MessageInfo';
 
 import { useCartContext } from '../../context/CartContext';
 
@@ -12,7 +13,7 @@ const ItemDetail = ({ item }) => {
       const INIT_VALUE = 0;
       const { id=0, title=NO_EXISTE, autor=NO_EXISTE, publication=1900, description=NO_EXISTE, price=0, stock=0, pictureUrl } = item;
       
-      const { addItem, getQuantityByItem } = useCartContext();
+      const { addItem, isInCart } = useCartContext();
 
       // Estado para ocultar el componente ItemCount
       const [finalizarCompra, setFinalizarCompra] = useState(false);
@@ -38,12 +39,20 @@ const ItemDetail = ({ item }) => {
                               <p className='detail-price'>{price} €</p>
                               {/* // Call ItemCount */}
                               {
-                                    finalizarCompra ?
-                                          <Link to='/cart'>
-                                                <button className="btn-custom">Terminar compra</button>
-                                          </Link>
+                                    isInCart(id) ?
+                                          (
+                                                <>
+                                                      {finalizarCompra ? <MessageInfo msn="El producto se ha agregado al carrito" etiquetamsn="h5" colortext="success" icontype="smile" />
+                                                      : <MessageInfo msn="El producto ya fue agregado al carrito" etiquetamsn="h5" colortext="info" icontype="sunglasses" />
+                                                      }
+                                                      <br />
+                                                      <Link to='/cart'>
+                                                            <button className="btn-custom">Terminar compra</button>
+                                                      </Link>
+                                                </>
+                                          )
                                     :
-                                          <ItemCount stock={stock - getQuantityByItem(id)} initial={INIT_VALUE} onAdd={onAdd} />
+                                          <ItemCount stock={stock} initial={INIT_VALUE} onAdd={onAdd} />
                               }
                         </section>
                   </div>

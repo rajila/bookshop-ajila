@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
 import './ItemDetailContainer.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 // Call services
-// import BookService from '../../services/BookService';
 import BookService from '../../services/FirebaseService';
+import GoBack from '../GoBack/GoBack';
 
 const ItemDetailContainer = () => {
       const [item, setItem] = useState({});
       const [loading, setLoading] = useState(true);
 
-      const navigate = useNavigate();
       const { id } = useParams();
 
       const loadSpinner = () => {
@@ -24,18 +23,10 @@ const ItemDetailContainer = () => {
             );
       };
 
-      const actionAtras = () => {
-            navigate(-1);
-      }
-
       const loadItemDetail = () => {
             return(
                   <div className="container">
-                        <p className='text-start'>
-                              <span onClick={actionAtras} className='text-start btn-atras'>
-                                    <img src="/assets/img/iconos/atras.png" alt="Icono carrito compra" /> Atr&aacute;s
-                              </span>
-                        </p>
+                        <GoBack />
                         <ItemDetail item={item} />
                   </div>
             );
