@@ -1,5 +1,3 @@
-import './ResumeOrder.css';
-
 const ResumeOrder = ({ title, total = 0, quantitycart = 0, children}) => {
       return (
             <div className="container content-resume">

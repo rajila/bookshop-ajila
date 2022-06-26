@@ -33,9 +33,9 @@ const ItemDetailContainer = () => {
       }
 
       useEffect(() => {
-            const { getItem } = BookService();
+            const { getDocById } = BookService();
             setLoading(true);
-            getItem(id).then(data => {
+            getDocById(id).then(data => {
                   setItem(data);
             }).catch(err => {
                   console.error('ERROR:',err);

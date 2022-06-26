@@ -1,11 +1,11 @@
 // Your web app's Firebase configuration
 const FirebaseConfiguration = {
-      apiKey: "AIzaSyDyO73moHbX2CV4Lssif9PxTjr_bbQyuys",
-      authDomain: "bookshop-ajila.firebaseapp.com",
-      projectId: "bookshop-ajila",
-      storageBucket: "bookshop-ajila.appspot.com",
-      messagingSenderId: "531748605201",
-      appId: "1:531748605201:web:106d1d7123d7d2669010b0"
+      apiKey: "AIzaSyBC5X5YMg8IUM2NUlxtXFR_tjrSCUoc4QI",
+      authDomain: "bookshop-ajila-58e0b.firebaseapp.com",
+      projectId: "bookshop-ajila-58e0b",
+      storageBucket: "bookshop-ajila-58e0b.appspot.com",
+      messagingSenderId: "673253290567",
+      appId: "1:673253290567:web:0de5c7e36bd6fb6cd43762"      
 };
 
 export default FirebaseConfiguration;

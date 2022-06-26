@@ -1,4 +1,5 @@
 export const FirebaseCollections = {
       books: "books",
-      orders: "orders"
+      orders: "orders",
+      categories: "categories"
 };

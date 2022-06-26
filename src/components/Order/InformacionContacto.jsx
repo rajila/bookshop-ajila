@@ -18,18 +18,23 @@ const InformacionContacto = ( { error, eventChange } ) => {
       return (
             <div className="order-form-content">
                   <div className="text-start">
-                        <label htmlFor="name" className="form-label fw-bold">Nombres</label>
+                        <label htmlFor="name" className="form-label"><b>Nombres</b> <span className="text-danger">(<b>*</b>)</span></label>
                         <input {...setAttributesInput('name', 'text', error.name)} placeholder="Nombres completos" />
                         { drawErrorFeedback(error.name) }
                   </div>
                   <div className="text-start">
-                        <label htmlFor="email" className="form-label fw-bold">Correo electrónico</label>
-                        <input {...setAttributesInput('email', 'email', error.email)} placeholder="Ejemplo: example@example.com" />
+                        <label htmlFor="email" className="form-label"><b>Correo electrónico</b> <span className="text-danger">(<b>*</b>)</span></label>
+                        <input {...setAttributesInput('email', 'email', error.email)} placeholder="example@example.com" />
                         { drawErrorFeedback(error.email) }
                   </div>
                   <div className="text-start">
-                        <label htmlFor="phone" className="form-label fw-bold">Teléfono</label>
-                        <input {...setAttributesInput('phone', 'text', error.phone)} placeholder="Ejemplo: 123456789" />
+                        <label htmlFor="remail" className="form-label"><b>Repita Correo electrónico</b> <span className="text-danger">(<b>*</b>)</span></label>
+                        <input {...setAttributesInput('remail', 'email', error.remail)} placeholder="Repita su correo electrónico" />
+                        { drawErrorFeedback(error.remail) }
+                  </div>
+                  <div className="text-start">
+                        <label htmlFor="phone" className="form-label"><b>Teléfono</b> <span className="text-danger">(<b>*</b>)</span></label>
+                        <input {...setAttributesInput('phone', 'text', error.phone)} placeholder="123456789" />
                         { drawErrorFeedback(error.phone) }
                   </div>
             </div>

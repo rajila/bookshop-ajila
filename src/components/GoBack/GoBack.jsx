@@ -10,7 +10,7 @@ const GoBack = () => {
       return (
             <p className='text-start'>
                   <span onClick={actionAtras} className='text-start btn-atras'>
-                        <img src="/assets/img/iconos/atras.png" alt="Icono carrito compra" /> Atr&aacute;s
+                        <img src="/assets/img/iconos/atras.png" alt="Atrás" /> Atr&aacute;s
                   </span>
             </p>
       );

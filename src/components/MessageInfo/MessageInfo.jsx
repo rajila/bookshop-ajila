@@ -21,7 +21,7 @@ const MessageInfo = ( { msn = 'No hay resultados que mostrar.', etiquetamsn='h4'
 
       return (
             <>
-                  <Alert className='fw-bold msn-data' key={colortext} variant={colortext}>
+                  <Alert className={`fw-bold msn-data text-${colortext}`} key={colortext} variant={colortext}>
                         { getEtiqueta() }
                   </Alert>
                   { children }

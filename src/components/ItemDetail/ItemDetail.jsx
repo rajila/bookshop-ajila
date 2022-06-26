@@ -34,7 +34,7 @@ const ItemDetail = ({ item }) => {
                         <hr id="separador-detail" className='separador-detail' />
                         <section>
                               <p className='text-start'><b>Autor(es): </b>{autor}</p>
-                              <p className='text-start'><b>Publicación: </b>{publication}</p>
+                              <p className='text-start'><b>Año publicación: </b>{publication}</p>
                               <p className='description-detail'><q><span className='d-d'>{description}</span></q></p>
                               <p className='detail-price'>{price} €</p>
                               {/* // Call ItemCount */}
@@ -43,7 +43,7 @@ const ItemDetail = ({ item }) => {
                                           (
                                                 <>
                                                       {finalizarCompra ? <MessageInfo msn="El producto se ha agregado al carrito" etiquetamsn="h5" colortext="success" icontype="smile" />
-                                                      : <MessageInfo msn="El producto ya fue agregado al carrito" etiquetamsn="h5" colortext="info" icontype="sunglasses" />
+                                                      : <MessageInfo msn="El producto ya fue agregado al carrito" etiquetamsn="h5" colortext="success" icontype="sunglasses" />
                                                       }
                                                       <br />
                                                       <Link to='/cart'>

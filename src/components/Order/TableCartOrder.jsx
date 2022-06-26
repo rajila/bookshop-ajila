@@ -1,6 +1,15 @@
 import { BsTrashFill } from 'react-icons/bs';
 
 const TableCartOrder = ( {cart, deleteItem} ) => {
+      const getStatus = (stock = 0, quantity = 0) => {
+            const result = stock - quantity;
+            return (
+                  result < 0 ? 
+                        <span className='text-danger'><b>Sin stock</b> ({stock})</span>
+                        :
+                        <span className='text-success'><b>En stock</b></span>
+            );
+      };
       return (
             <div className='order-cart-content'>
                   <table className="table table-striped">
@@ -20,7 +29,7 @@ const TableCartOrder = ( {cart, deleteItem} ) => {
                                                 <td>{data.title}</td>
                                                 <td>{data.quantity}</td>
                                                 <td>{data.price} €</td>
-                                                <td>En stock</td>
+                                                <td>{ getStatus(data.stock, data.quantity) }</td>
                                                 <td className='text-end'><BsTrashFill className='delete-item-order' onClick={() => deleteItem(data.id)} /></td>
                                           </tr>)
                                     )

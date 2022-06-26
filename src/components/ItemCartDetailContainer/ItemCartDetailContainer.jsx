@@ -6,7 +6,7 @@ import ResumeOrder from "../ResumeOrder/ResumeOrder";
 import './ItemCartDetailContainer.css';
 
 const ItemCartDetailContainer = ({ cart, removeItem, getTotal, clear, getQuantityCart }) => {
-      const onRemoveItemCart = (id, title) => {
+      const onRemoveItemCart = (id) => {
             removeItem(id);
       };
 

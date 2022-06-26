@@ -16,14 +16,14 @@ import TableCartOrder from './TableCartOrder';
 import InformacionContacto from './InformacionContacto';
 
 const Order = () => {
-      const [buyer, setBuyer] = useState({name: '', email: '', phone: ''});
+      const [buyer, setBuyer] = useState({name: '', email: '', remail:'', phone: ''});
       const [error, setError] = useState({});
       const [orderData, setOrderData] = useState(null);
 
       const refBtnComprar = useRef(null);
       const refSpinner = useRef(null);
 
-      const { cart, getTotal, getQuantityCart, removeItem, clear } = useCartContext();
+      const { cart, getTotal, getQuantityCart, removeItem, clear, updateStock } = useCartContext();
 
       const deleteItem = (itemId) => {
             removeItem(itemId);
@@ -49,11 +49,12 @@ const Order = () => {
       const eventSubmit = (e) => {
             e.preventDefault();
             const order = {
-                  buyer,
+                  buyer: {...buyer},
                   items: cart.map(data => ( {id: data.id, title: data.title, price: data.price, quantity: data.quantity} )),
                   total: getTotal(),
                   date: Date.now()
             };
+
             const validationData = valideOrder({ buyer });
             
             changeClass(refBtnComprar.current);
@@ -65,6 +66,8 @@ const Order = () => {
                   changeClass(refSpinner.current);
                   return;
             }
+            
+            delete order.buyer.remail;
             const { saveOrder } = BookService(FirebaseCollections.orders);
             saveOrder(order).then(resp => {
                   if ( !resp.iserror ) {
@@ -73,7 +76,10 @@ const Order = () => {
                   } else {
                         changeClass(refBtnComprar.current);
                         changeClass(refSpinner.current);
-                        setError({...validationData, error : true, errorserver: 'Error al procesar su compra, por favor inténtelo más tarde.'});
+                        if ( resp.items ) {
+                              updateStock( resp.items );
+                              setError({...validationData, error : true, errorstock: 'Estimado cliente su cesta tiene productos SIN STOCK, por favor eliminarlos e la cesta'});
+                        } else setError({...validationData, error : true, errorserver: 'Error al procesar su compra, por favor inténtelo más tarde.'});
                   }
             });
       };
@@ -102,6 +108,7 @@ const Order = () => {
                                           <br />
                                           <h5 className="text-start">Productos</h5>
                                           <hr />
+                                          { error.error && error.errorstock && <MessageInfo msn={error.errorstock} etiquetamsn="h6" />}
                                           <TableCartOrder cart={cart} deleteItem={deleteItem} />
                                     </div>
                                     <div className="col-md-auto">

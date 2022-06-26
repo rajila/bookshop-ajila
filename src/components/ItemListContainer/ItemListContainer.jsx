@@ -9,13 +9,14 @@ import BookService from '../../services/FirebaseService';
 
 import ItemList from '../ItemList/ItemList';
 
-import { categoriesLabel } from '../../helpers/BookUtil';
 import MessageInfo from '../MessageInfo/MessageInfo';
+import { FirebaseCollections } from '../../helpers/FirebaseUtil';
 
 
 const ItemListContainer = () => {
       const [items, setItems] = useState([]);
       const [loading, setLoading] = useState(true);
+      const [category, setCategory] = useState({});
       
       const { id } = useParams();
 
@@ -28,8 +29,16 @@ const ItemListContainer = () => {
       };
       
       useEffect(() => {
-            const { getAllBooks, getItemByCategory } = BookService();
-            const getItemsExecute = (id === null || id === undefined) ? getAllBooks() : getItemByCategory(id);
+            const { getAllDocs, getDocsByField } = BookService();
+            const getItemsExecute = (id === null || id === undefined) ? 
+                                          getAllDocs() 
+                                          : 
+                                          getDocsByField('key', id, '==', FirebaseCollections.categories)
+                                                .then(resp => ( { ...resp[0] } ))
+                                                .then(category => {
+                                                      if ( category.id ) setCategory(category);
+                                                      return getDocsByField('categoryId', category.id || '', '==');
+                                                });
             setLoading(true);
             (getItemsExecute).then(data => {
                   setItems(data);
@@ -43,7 +52,7 @@ const ItemListContainer = () => {
       return (
             <div className='item-container'>
                   <div className='header-content-item'>
-                        <h1>Libros {(id === null || id === undefined) ? '' : ` de "${categoriesLabel[id] || id}"`}</h1>
+                        <h1>Libros {(id === null || id === undefined) ? '' : ` de "${category.description || id}"`}</h1>
                         <p className='frase-book'><q><span className='d-d'>El que ama la lectura, tiene todo a su alcance.</span></q> [William Godwim]</p>
                         <hr />
                   </div>

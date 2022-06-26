@@ -1,9 +1,30 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css';
+import BookService from '../services/FirebaseService';
+import { FirebaseCollections } from '../helpers/FirebaseUtil';
 
 const NavBar = () => {
+    const [categories, setCategories ] = useState([]);
+
+    const drawCategoriesMenu = () => {
+        return (
+            categories.map(data => (
+                <li className="nav-item" key={data.id}>
+                    <Link to={`/category/${data.key}`} className="nav-link active" aria-current="page">{data.description}</Link>
+                </li>
+            ))
+        );
+    };
+
+    useEffect(() => {
+        const { getAllDocs } = BookService(FirebaseCollections.categories);
+        getAllDocs().then(resp => (resp.sort( (prev, next) => (prev.key > next.key)?1:((prev.key < next.key)?-1:0) )))
+                    .then(data => setCategories(data));
+    }, [categories]);
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -31,15 +52,7 @@ const NavBar = () => {
                                 <li className="nav-item">
                                     <Link to={"/"} className="nav-link active" aria-current="page">Inicio</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to={"/category/computacion"} className="nav-link active" aria-current="page">Computaci&oacute;n</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to={"/category/matematicas"} className="nav-link active" aria-current="page">Matem&aacute;ticas</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to={"/category/medicina"} className="nav-link active" aria-current="page">Medicina</Link>
-                                </li>
+                                { drawCategoriesMenu() }
                             </ul>
                             <ul className="navbar-nav user pull-right">
 	                            <li className="dropdown menu">

@@ -20,13 +20,6 @@ export const CartProvider = (props) => {
 
       // Remueve una unidad del item hasta que se quede sin unidades. Si la cantidad es 0, lo elimina del carrito.cart
       const removeItem = (itemId = undefined) => {
-            // const itemIndex = cart.findIndex((el) => el.id === itemId); // Busca el item en el carrito
-            // if (itemIndex === -1) return false;
-            // setCart((cart) => {
-            //       let quantity = cart[itemIndex].quantity - 1;
-            //       return (quantity <= 0) ? [...cart.slice(0, itemIndex), ...cart.slice(itemIndex + 1)] : [...cart.slice(0, itemIndex), { ...cart[itemIndex], quantity }, ...cart.slice(itemIndex + 1)];
-            // });
-            
             // Elimina el item del carrito, sin importar la cantidad. REGLAS DEL DESAFIO
             setCart((cart) => cart.filter((el) => el.id !== itemId));
             return true;
@@ -53,8 +46,22 @@ export const CartProvider = (props) => {
             return ((cart.find(el => el.id === itemId) || {}).quantity) || 0;
       };
 
+      // Retorna el total del carrito de compra
       const getTotal = () => {
             return Number((cart.reduce((prevTotal, el) => prevTotal + (el.price * el.quantity), 0)).toFixed(2));
+      };
+
+      // Actualiza el stock de los productos, previamente pasado por la firma del metodo
+      const updateStock = (dataUpdate = []) => {
+            if ( !(dataUpdate instanceof Array && dataUpdate.length !== 0) ) return false;
+            setCart((cart) => {
+                  dataUpdate.forEach( data => {
+                        const itemIndex = cart.findIndex(el => el.id === data.id);
+                        if (itemIndex !== -1) cart[itemIndex].stock = data.stock;
+                  });
+                  return [ ...cart ];
+            });
+            return true;
       };
 
       return(
@@ -67,7 +74,8 @@ export const CartProvider = (props) => {
                         isInCart, 
                         getQuantityCart, 
                         getQuantityByItem,
-                        getTotal
+                        getTotal,
+                        updateStock
                   } 
             }>
                   { props.children }
