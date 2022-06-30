@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from "../../context/CartContext";
 
@@ -7,8 +8,12 @@ import MessageInfo from '../MessageInfo/MessageInfo';
 import './Cart.css';
 
 const Cart = () => {
-      const { cart, getQuantityCart, removeItem, getTotal, clear } = useCartContext();
+      const { cart, updateCartFromStorage, getQuantityCart, removeItem, getTotal, clear } = useCartContext();
       const dataCartContext = { cart, removeItem, getTotal, clear, getQuantityCart };
+
+      useEffect(() => {
+            updateCartFromStorage();
+      }, [updateCartFromStorage]);
 
       const messageCartEmpty = () => {
             return (

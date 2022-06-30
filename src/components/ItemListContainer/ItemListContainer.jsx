@@ -5,7 +5,7 @@ import { Spinner } from "react-bootstrap";
 import './ItemListContainer.css';
 
 // Call services
-import BookService from '../../services/FirebaseService';
+import FirebaseService from '../../services/FirebaseService';
 
 import ItemList from '../ItemList/ItemList';
 
@@ -29,7 +29,7 @@ const ItemListContainer = () => {
       };
       
       useEffect(() => {
-            const { getAllDocs, getDocsByField } = BookService();
+            const { getAllDocs, getDocsByField } = FirebaseService();
             const getItemsExecute = (id === null || id === undefined) ? 
                                           getAllDocs() 
                                           : 

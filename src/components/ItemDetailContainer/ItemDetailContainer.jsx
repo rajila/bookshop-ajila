@@ -6,7 +6,7 @@ import './ItemDetailContainer.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 // Call services
-import BookService from '../../services/FirebaseService';
+import FirebaseService from '../../services/FirebaseService';
 import GoBack from '../GoBack/GoBack';
 
 const ItemDetailContainer = () => {
@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
       }
 
       useEffect(() => {
-            const { getDocById } = BookService();
+            const { getDocById } = FirebaseService();
             setLoading(true);
             getDocById(id).then(data => {
                   setItem(data);

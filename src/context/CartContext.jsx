@@ -1,14 +1,24 @@
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect, useCallback } from "react";
+import { cartStorage, updateCart } from "../helpers/StorageUtil";
 
 const CartContext = createContext(); // Crea la variable de contexto
 
 export const useCartContext = () => useContext(CartContext); // Crea el hook para usar el contexto
 
 export const CartProvider = (props) => {
-      const [cart, setCart] = useState([]); // Crea el state del carrito
+      const [cart, setCart] = useState(cartStorage()); // Crea el state del carrito
+
+      useEffect( () => {
+            updateCart(cart);
+      }, [cart]);
+
+      const updateCartFromStorage = useCallback(() => {
+            setCart(cartStorage());
+      }, []);
 
       // Agrega un elemento si no existe, o le suma una cantidad si existe.
       const addItem = (item = {}, quantity = 0) => {
+            setCart(cartStorage());
             if (item.id === undefined || quantity <= 0) return false;
             const itemIndex = cart.findIndex((el) => el.id === item.id); // Busca el item en el carrito
             setCart((cart) => {
@@ -20,8 +30,11 @@ export const CartProvider = (props) => {
 
       // Remueve una unidad del item hasta que se quede sin unidades. Si la cantidad es 0, lo elimina del carrito.cart
       const removeItem = (itemId = undefined) => {
+            setCart(cartStorage());
             // Elimina el item del carrito, sin importar la cantidad. REGLAS DEL DESAFIO
-            setCart((cart) => cart.filter((el) => el.id !== itemId));
+            setCart((cart) => {
+                  return cart.filter((el) => el.id !== itemId);
+            });
             return true;
       };
 
@@ -53,6 +66,7 @@ export const CartProvider = (props) => {
 
       // Actualiza el stock de los productos, previamente pasado por la firma del metodo
       const updateStock = (dataUpdate = []) => {
+            setCart(cartStorage());
             if ( !(dataUpdate instanceof Array && dataUpdate.length !== 0) ) return false;
             setCart((cart) => {
                   dataUpdate.forEach( data => {
@@ -64,10 +78,17 @@ export const CartProvider = (props) => {
             return true;
       };
 
+      // Verfica si hay stock disponible. False -> No hay stock, True -> Si hay stock
+      const checkOutStockByItem = (itemId) => {
+            const { stock, quantity } = cart.find(el => el.id === itemId) || {};
+            return stock ? (stock - quantity) >= 0 : false;
+      };
+
       return(
             <CartContext.Provider value={ 
                   {
                         cart, 
+                        updateCartFromStorage,
                         addItem, 
                         removeItem, 
                         clear, 
@@ -75,7 +96,8 @@ export const CartProvider = (props) => {
                         getQuantityCart, 
                         getQuantityByItem,
                         getTotal,
-                        updateStock
+                        updateStock,
+                        checkOutStockByItem
                   } 
             }>
                   { props.children }

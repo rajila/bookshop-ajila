@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css';
-import BookService from '../services/FirebaseService';
+import FirebaseService from '../services/FirebaseService';
 import { FirebaseCollections } from '../helpers/FirebaseUtil';
 
 const NavBar = () => {
@@ -20,10 +20,13 @@ const NavBar = () => {
     };
 
     useEffect(() => {
-        const { getAllDocs } = BookService(FirebaseCollections.categories);
+        const { getAllDocs } = FirebaseService(FirebaseCollections.categories);
         getAllDocs().then(resp => (resp.sort( (prev, next) => (prev.key > next.key)?1:((prev.key < next.key)?-1:0) )))
-                    .then(data => setCategories(data));
-    }, [categories]);
+                    .then(data => setCategories(data))
+                    .catch(err => {
+                        console.error('ERROR:',err);
+                    });
+    }, []);
 
     return (
         <header>

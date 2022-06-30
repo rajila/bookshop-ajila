@@ -17,7 +17,7 @@ const ItemCartDetail = ({ item, onRemoveItemCart }) => {
                                           <h4 className='text-start'>{title}</h4>
                                     </section>
                                     <section className='col text-end'>
-                                          <button onClick={ () => onRemoveItemCart(id, title) } className="btn-redondo">
+                                          <button onClick={ () => onRemoveItemCart(id) } className="btn-redondo">
                                                 <BsXLg />
                                           </button>
                                     </section>

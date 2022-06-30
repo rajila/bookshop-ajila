@@ -1,13 +1,12 @@
 import { BsTrashFill } from 'react-icons/bs';
 
-const TableCartOrder = ( {cart, deleteItem} ) => {
-      const getStatus = (stock = 0, quantity = 0) => {
-            const result = stock - quantity;
+const TableCartOrder = ( {cart, deleteItem, checkOutStockByItem} ) => {
+      const getStatusStock = (id, stock = 0) => {
             return (
-                  result < 0 ? 
-                        <span className='text-danger'><b>Sin stock</b> ({stock})</span>
-                        :
+                  checkOutStockByItem(id) ? 
                         <span className='text-success'><b>En stock</b></span>
+                        :
+                        <span className='text-danger'><b>Sin stock</b> ({stock})</span>
             );
       };
       return (
@@ -29,7 +28,7 @@ const TableCartOrder = ( {cart, deleteItem} ) => {
                                                 <td>{data.title}</td>
                                                 <td>{data.quantity}</td>
                                                 <td>{data.price} €</td>
-                                                <td>{ getStatus(data.stock, data.quantity) }</td>
+                                                <td>{ getStatusStock(data.id, data.stock) }</td>
                                                 <td className='text-end'><BsTrashFill className='delete-item-order' onClick={() => deleteItem(data.id)} /></td>
                                           </tr>)
                                     )

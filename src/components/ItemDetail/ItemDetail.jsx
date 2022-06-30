@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import ItemCount from '../ItemCount/ItemCount';
@@ -13,10 +13,14 @@ const ItemDetail = ({ item }) => {
       const INIT_VALUE = 0;
       const { id=0, title=NO_EXISTE, autor=NO_EXISTE, publication=1900, description=NO_EXISTE, price=0, stock=0, pictureUrl } = item;
       
-      const { addItem, isInCart } = useCartContext();
+      const { addItem, updateCartFromStorage, isInCart, getQuantityByItem } = useCartContext();
 
       // Estado para ocultar el componente ItemCount
       const [finalizarCompra, setFinalizarCompra] = useState(false);
+
+      useEffect(() => {
+            updateCartFromStorage();
+      }, [updateCartFromStorage]);
       
       // Funcion no implementada que se encarga de aumentar el numero de elementos en el carrito
       const onAdd = (quantityToAdd) => {
@@ -43,7 +47,7 @@ const ItemDetail = ({ item }) => {
                                           (
                                                 <>
                                                       {finalizarCompra ? <MessageInfo msn="El producto se ha agregado al carrito" etiquetamsn="h5" colortext="success" icontype="smile" />
-                                                      : <MessageInfo msn="El producto ya fue agregado al carrito" etiquetamsn="h5" colortext="success" icontype="sunglasses" />
+                                                      : <MessageInfo msn={`El producto ya fue agregado al carrito con ${getQuantityByItem(id)} unidad(es).`} etiquetamsn="h5" colortext="success" icontype="sunglasses" />
                                                       }
                                                       <br />
                                                       <Link to='/cart'>
