@@ -2,83 +2,81 @@
 
 '**`Book Shop`**' es un portal web en donde podrá encontrar todo tipo de libro y poder adquirirlo sin moverse de casa.
 
-## Categorias
-Nuestra tienda de libros cuenta actualmente con 3 tipos de categorias, en donde podra encontrar diferentes tipos de libros a su gusto.
-- Computación
-- Matemáticas
-- Medicina
-
 No olvide que '**`Book Shop`**' siempre ofrece los mejores precios que la competencia.
 
 > Nota: Realizamos entregas en toda España con envío **GRATIS**.
 
-# Getting Started with Create React App
+## Categorías
+Nuestra tienda de libros cuenta actualmente con 3 tipos de categorías, en donde podra encontrar diferentes tipos de libros a su gusto.
+- Computación
+- Matemáticas
+- Medicina
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Funcionalidades
+- Ver catálogo de libros disponibles en la tienda.
+- Mostrar libros por categoría.
+- Ver detalle del libro.
+- Agregar uno o varios ejemplares de un libro al carrito de compras.
+- Eliminar ítems del carrito de compras.
+- Vacíar el carrito de compras.
+- Tramitar una orden de compra.
+- Ver ticket de compra
 
-## Available Scripts
+## Diagrama de componentes
+A continuación se detallan los componentes utilizados en el desarrollo de la aplicación.
 
-In the project directory, you can run:
+- #### Componente general
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componenteGeneral.drawio.png">
+</p>
 
-### `npm start`
+- #### Componente barra de menú
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componenteNavBar.drawio.png">
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- #### Componente de catálogo de libros
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componenteInicio.drawio.png">
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- #### Componente detalle del libro
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componentItemDetalle.drawio.png">
+</p>
 
-### `npm test`
+- #### Componente carrito de compras
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componentCart.drawio.png">
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- #### Componente tramitar pedido
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componentOrder.drawio.png">
+</p>
 
-### `npm run build`
+- #### Componente ticket de compra
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/componentTicket.drawio.png">
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Diagrama de colecciones en Firebase
+A continuación se listan las colecciones usadas en la implemtación de la aplicación.
+- **books**.- Almacena los libros disponibles en la aplicación.
+- **categories**.- Almacena las categorías, las cuales permiten clasificar a los libros.
+- **orders**.- Almacena la orden de compra del cliente, en donde guarda los items y la información del cliente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="center">
+  <img src="https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/diagramaClases.drawio.png">
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Dependencias de la aplicación
+A continuación se listan las depencias utilizadas para el desarrollo de la aplicación.
+- **ReacJS** ^18.1.0 - Librería principal
+- **React Router DOM** ^6.3.0 - Navegación de la aplicación.
+- **Bootstrap** ^5.1.3 - Maquetación y estilos.
+- **React icons** ^4.4.0 - Iconos de la aplicación.
+- **Firebase** ^9.8.3 - Servicio de base de datos.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Demostración de la aplicación
+![image description](https://github.com/rajila/bookshop-ajila/blob/main/resource_doc/BookShopNav.gif)
